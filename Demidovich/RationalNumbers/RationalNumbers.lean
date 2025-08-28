@@ -56,3 +56,12 @@ theorem factorial_pow (n : ℕ) (hn : 1 ≤ n) : Nat.factorial n < (n+1)^n := by
         apply Nat.pow_lt_pow_of_lt_left
         · exact Nat.lt_succ_self (n + 1)
         · exact h_zero_lt
+
+-- # Task 9
+-- making a function for even factorials prod
+def doubleFactorialProduct (n : ℕ) : ℕ :=
+  (Finset.range n).prod (fun k => Nat.factorial (2 * (k + 1)))
+
+#eval doubleFactorialProduct 3  -- evaluating `2!*4!*6! = 2*24*720 = 34560`
+
+example (n : ℕ) :
